@@ -1,0 +1,115 @@
+/* Sunfall City — page shell and start-screen styling.
+   The game itself is drawn entirely on the canvas; this file only covers the
+   page, the canvas fit, and the title menu overlay. */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #12303c;
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+}
+
+#game {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  cursor: crosshair;
+}
+
+/* --- start screen ---------------------------------------------------------- */
+#menu {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(24, 10, 4, 0.25) 0%, rgba(24, 10, 4, 0.55) 100%);
+  z-index: 10;
+}
+
+#menu .panel {
+  max-width: 560px;
+  width: calc(100% - 48px);
+  text-align: center;
+  padding: 34px 38px 28px;
+  background: rgba(17, 16, 26, 0.82);
+  border: 1px solid rgba(255, 216, 61, 0.35);
+  border-radius: 16px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+  color: #f5f0e6;
+}
+
+#menu .kicker {
+  letter-spacing: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffb35c;
+}
+
+#menu h1 {
+  font-size: 58px;
+  line-height: 1.02;
+  margin: 10px 0 12px;
+  font-weight: 900;
+  color: #ffd83d;
+  text-shadow: 0 3px 0 #e2725b, 0 8px 26px rgba(0, 0, 0, 0.6);
+}
+#menu h1 span { color: #ff7847; }
+
+#menu .tagline {
+  font-size: 15px;
+  line-height: 1.55;
+  color: #e8e0cd;
+}
+
+#menu .buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 22px 0 18px;
+}
+
+#menu button {
+  font: inherit;
+  font-weight: 800;
+  font-size: 16px;
+  padding: 12px 26px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #ffd83d;
+  color: #23180a;
+  transition: transform 0.08s ease, background 0.15s ease;
+}
+#menu button:hover:not(:disabled) { background: #ffe36e; transform: translateY(-1px); }
+#menu button:disabled { background: #5a5a64; color: #a9a9b2; cursor: default; }
+#btnContinue { background: #2e4a7d; color: #eaf2ff; }
+#btnContinue:hover:not(:disabled) { background: #3a5c99; }
+
+#menu .controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 18px;
+  text-align: left;
+  font-size: 13.5px;
+  color: #cfc8b4;
+  margin: 4px auto 14px;
+  max-width: 430px;
+}
+#menu .controls b { color: #ffd83d; font-weight: 700; }
+
+#menu .fineprint {
+  font-size: 12px;
+  color: #9d9682;
+  line-height: 1.5;
+}
+
+/* Narrow windows: shrink the title panel so the city stays visible. */
+@media (max-width: 640px) {
+  #menu h1 { font-size: 40px; }
+  #menu .panel { padding: 24px 20px 20px; }
+  #menu .controls { grid-template-columns: 1fr; }
+}
